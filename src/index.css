@@ -90,3 +90,56 @@
   .crt { animation: none }
   .glitch-hover { animation: none; text-shadow: none; filter: none }
 }
+
+/* ---- Terminal validation helpers ---- */
+.term-error {
+  color: #FF2AD1; /* neon-ish red/pink */
+  text-shadow: 0 0 6px #FF2AD1, 0 0 18px #FF2AD1, 0 0 36px rgba(255, 42, 209, 0.35);
+  filter: saturate(1.2) contrast(1.05);
+}
+
+.term-success {
+  color: #39FF14; /* neon green */
+  text-shadow: 0 0 8px #39FF14, 0 0 22px #39FF14, 0 0 48px rgba(57,255,20,0.35);
+  animation: glitch-jitter 140ms steps(2) 6;
+}
+
+.term-type {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1ch solid rgba(230,241,255,0.5);
+  /* typing effect with blinking caret */
+  animation: typing 1200ms steps(30, end) 1, caret 900ms steps(1, end) infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes caret {
+  50% { border-color: transparent }
+}
+
+/* Expand/reveal helper for ASCII clue after success */
+.ascii-reveal {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 500ms ease, opacity 500ms ease;
+}
+.ascii-reveal--open {
+  max-height: 1000px; /* large enough for the art */
+  opacity: 1;
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .term-type { animation: none; border-right: none }
+  .term-success { animation: none }
+}
+
+/* one-shot glitch animation helper */
+.glitch-once {
+  animation: glitch-jitter 140ms steps(2) 4;
+}
