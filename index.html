@@ -4,9 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta name="theme-color" content="#0A0F14" />
+
+    <!-- Retro font for mono terminal aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    >
+
+    <title>Retro Cyber Terminal</title>
+
+    <!-- hint: CRT phosphors remember what eyes forget -->
+    <!-- hint: check component sources for artifacts; some ASCII whispers secrets -->
   </head>
   <body>
+    <noscript>
+      <style>
+        body { background:#0A0F14; color:#E6F1FF; font-family: VT323, monospace; padding: 1rem; }
+      </style>
+      JavaScript required. Terminal offline.
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
