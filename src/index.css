@@ -1,68 +1,92 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Base layer: global typography, surfaces, and smoothing */
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-surface-base text-text-primary font-mono;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply text-neon-blue;
   }
   a:hover {
-    color: #747bff;
+    color: #FF2AD1; /* neon pink */
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+/* CRT-style flicker */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.97 }
+  50% { opacity: 1 }
+}
+.crt {
+  animation: crt-flicker 2500ms steps(100) infinite;
+}
+
+/* Simple glitch jiggle (used sparingly for hover) */
+@keyframes glitch-jitter {
+  0% { transform: translate(0,0) }
+  20% { transform: translate(-1px, 1px) }
+  40% { transform: translate(1px, -1px) }
+  60% { transform: translate(-1px, -1px) }
+  80% { transform: translate(1px, 1px) }
+  100% { transform: translate(0,0) }
+}
+
+/* Scanline overlay: place on a fixed element filling the viewport */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.04) 0px,
+    rgba(255,255,255,0.04) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+/* Hover glitch helper */
+.glitch-hover:hover {
+  text-shadow:
+    0 0 2px #39FF14,
+    0 0 8px #39FF14,
+    2px 0 #FF2AD1,
+    -2px 0 #00E5FF;
+  filter: saturate(1.25) contrast(1.1);
+  animation: glitch-jitter 120ms steps(2) 1;
+}
+
+/* Neon focus ring for keyboard nav */
+.neon-focus:focus-visible {
+  outline: 2px solid #00E5FF;
+  box-shadow: 0 0 0 4px rgba(0,229,255,0.15);
+}
+
+/* Link helper */
+.neon-link {
+  transition: color 200ms, text-shadow 200ms, filter 200ms;
+}
+.neon-link:hover {
+  color: #FF2AD1;
+  text-shadow: 0 0 8px #FF2AD1;
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .crt { animation: none }
+  .glitch-hover { animation: none; text-shadow: none; filter: none }
 }
