@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-
 function FakeTerminal() {
   const [history, setHistory] = useState([
     { text: "Retro Cyber Terminal v1.2", className: "text-neon-green" },
@@ -50,7 +49,7 @@ function FakeTerminal() {
       );
       return;
     }
-    
+
     let userKeyBigInt;
     try {
       userKeyBigInt = BigInt(userKey);
@@ -59,16 +58,26 @@ function FakeTerminal() {
       return;
     }
 
-    print("🛰️ Requesting geolocation... please check your browser for a permission prompt.", "text-text-muted");
+    print(
+      "🛰️ Requesting geolocation... please check your browser for a permission prompt.",
+      "text-text-muted"
+    );
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        const { key: secretKey, len: expectedLen } = computeSecret(latitude, longitude);
+        const { key: secretKey, len: expectedLen } = computeSecret(
+          latitude,
+          longitude
+        );
         const userKeyAbs = userKeyBigInt < 0n ? -userKeyBigInt : userKeyBigInt;
 
         if (userKeyAbs === secretKey) {
           print("✅ Access granted. Key verified.", "term-success");
+          print(
+            "Your location is: " + latitude + ", " + longitude,
+            "text-text-muted"
+          );
         } else {
           const providedLen = userKey.length;
           print(
@@ -79,11 +88,14 @@ function FakeTerminal() {
       },
       (error) => {
         const messages = {
-          [error.PERMISSION_DENIED]: "Permission denied. Please enable location services and retry.",
-          [error.POSITION_UNAVAILABLE]: "Position unavailable. Could not acquire location.",
+          [error.PERMISSION_DENIED]:
+            "Permission denied. Please enable location services and retry.",
+          [error.POSITION_UNAVAILABLE]:
+            "Position unavailable. Could not acquire location.",
           [error.TIMEOUT]: "Request timed out. Please try again.",
         };
-        const errorMessage = messages[error.code] || "An unknown geolocation error occurred.";
+        const errorMessage =
+          messages[error.code] || "An unknown geolocation error occurred.";
         print(`❌ ${errorMessage}`, "term-error");
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
@@ -91,12 +103,17 @@ function FakeTerminal() {
   };
 
   const commands = {
-    help: () => print([
-      "Available commands:",
-      "  help          - Show this help message",
-      "  clear         - Clear the terminal screen",
-      "  checkkey <key>- Validate a key using your geolocation",
-    ], "text-text-muted"),
+    help: () =>
+      print(
+        [
+          "Available commands:",
+          "  help                    - Show this help message",
+          "  clear                   - Clear the terminal screen",
+          "  checkkey <key>          - Validate a key using your geolocation",
+          "  hint one|two|three      - Display puzzle hints",
+        ],
+        "text-text-muted"
+      ),
     clear,
     checkkey: (arg) => {
       if (!arg || !/^\d+$/.test(arg)) {
@@ -104,6 +121,29 @@ function FakeTerminal() {
         return;
       }
       validateKey(arg);
+    },
+    hint: (arg) => {
+      const a = (arg || "").trim().toLowerCase();
+      const type = (line) => print([line], "term-type text-neon-blue");
+
+      if (a === "1" || a === "one") {
+        return type("hint1: Your key is where you are!");
+      }
+      if (a === "2" || a === "two") {
+        return type(
+          "hint2: Learn how to get latitude and longitude from the console"
+        );
+      }
+      if (a === "3" || a === "three") {
+        return type(
+          "hint3: Explore the corners to get more hint."
+        );
+      }
+
+      print(
+        ["Usage: hint <one|two|three>", "Example: hint one"],
+        "text-text-muted"
+      );
     },
   };
 
@@ -125,10 +165,13 @@ function FakeTerminal() {
   };
 
   return (
-    <div className="font-mono rounded-lg border border-gray-700 bg-black p-4 shadow-lg">
-      <div className="mb-2 max-h-72 min-h-[8rem] overflow-auto">
+    <div className="font-mono rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 ">
+      <div className="mb-3 max-h-72 md:max-h-[28rem] min-h-[8rem] overflow-auto pr-1">
         {history.map((item, i) => (
-          <div key={i} className={`whitespace-pre-wrap ${item.className || ""}`}>
+          <div
+            key={i}
+            className={`whitespace-pre-wrap ${item.className || ""}`}
+          >
             {item.text}
           </div>
         ))}
@@ -147,7 +190,10 @@ function FakeTerminal() {
           autoCorrect="off"
           spellCheck={false}
         />
-        <button type="submit" className="px-3 py-1 rounded border border-gray-600 bg-gray-800 text-white hover:bg-gray-700">
+        <button
+          type="submit"
+          className="px-3 py-1 rounded border border-text-hairline/30 bg-surface-sunken text-text-primary "
+        >
           run
         </button>
       </form>

@@ -25,7 +25,7 @@ function MatrixCanvas() {
       drops: [],
       lastTime: 0,
       targetFPS: 30,
-      chars: "01カナネオン未来$#*+;.-",
+      chars: "0123456789",
     };
 
     const resize = () => {
@@ -69,7 +69,7 @@ function MatrixCanvas() {
         const y = state.drops[i] * state.fontSize;
 
         // Neon green glow
-        ctx.shadowColor = "rgba(57,255,20,0.7)";
+        ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
         ctx.shadowBlur = 8;
         ctx.fillStyle = "#39FF14";
 
