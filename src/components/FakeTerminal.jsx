@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 function FakeTerminal() {
   const [history, setHistory] = useState([
-    { text: "Retro Cyber Terminal v1.2", className: "text-neon-green" },
+    { text: "Retro Cyber Terminal", className: "text-neon-green" },
     { text: "Type 'help' to list commands.", className: "text-text-muted" },
   ]);
   const [input, setInput] = useState("");
@@ -165,39 +165,40 @@ function FakeTerminal() {
   };
 
   return (
-    <div className="font-mono rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 ">
-      <div className="mb-3 max-h-72 md:max-h-[28rem] min-h-[8rem] overflow-auto pr-1">
-        {history.map((item, i) => (
-          <div
-            key={i}
-            className={`whitespace-pre-wrap ${item.className || ""}`}
-          >
-            {item.text}
-          </div>
-        ))}
-        <div ref={bottomRef} />
+    <div className="font-mono rounded-lg border border-text-hairline/30 bg-surface-panel/10 backdrop-blur-md p-4 md:p-5">
+  <div className="mb-3 max-h-72 md:max-h-[28rem] min-h-[8rem] overflow-auto pr-1">
+    {history.map((item, i) => (
+      <div
+        key={i}
+        className={`whitespace-pre-wrap ${item.className || ""}`}
+      >
+        {item.text}
       </div>
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        <span className="text-neon-green select-none">$</span>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="flex-1 bg-transparent text-neon-green placeholder-gray-500 outline-none focus:ring-0"
-          placeholder="type a command..."
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck={false}
-        />
-        <button
-          type="submit"
-          className="px-3 py-1 rounded border border-text-hairline/30 bg-surface-sunken text-text-primary "
-        >
-          run
-        </button>
-      </form>
-    </div>
+    ))}
+    <div ref={bottomRef} />
+  </div>
+  <form onSubmit={handleSubmit} className="flex items-center gap-2">
+    <span className="text-neon-green select-none">$</span>
+    <input
+      ref={inputRef}
+      value={input}
+      onChange={(e) => setInput(e.target.value)}
+      className="flex-1 bg-transparent text-neon-green placeholder-gray-500 outline-none focus:ring-0"
+      placeholder="type a command..."
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
+      spellCheck={false}
+    />
+    <button
+      type="submit"
+      className="px-3 py-1 rounded border border-text-hairline/30 bg-surface-sunken/60 backdrop-blur-sm text-text-primary"
+    >
+      run
+    </button>
+  </form>
+</div>
+
   );
 }
 

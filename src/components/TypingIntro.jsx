@@ -50,16 +50,17 @@ function TypingIntro({ lines = [], charDelay = 18, lineDelay = 400 }) {
   }, [lines, charDelay, lineDelay, motionReduced]);
 
   return (
-    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 ">
-      <div aria-live="polite" className="text-neon-blue">
-        {output.map((line, i) => (
-          <div key={i} className="whitespace-pre-wrap">
-            {line}
-            {i === output.length - 1 && <span className="animate-pulse">▌</span>}
-          </div>
-        ))}
+    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel/20 backdrop-blur-md p-4 md:p-5">
+  <div aria-live="polite" className="text-neon-blue">
+    {output.map((line, i) => (
+      <div key={i} className="whitespace-pre-wrap">
+        {line}
+        {i === output.length - 1 && <span className="animate-pulse">▌</span>}
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 }
 

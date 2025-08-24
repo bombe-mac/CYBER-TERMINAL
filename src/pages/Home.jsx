@@ -28,7 +28,7 @@ function Home() {
         </header>
 
         <div className="grid gap-8">
-          {/* ASCII art with hidden Key 1 in source comments */}
+  
           
 
           {/* Typing intro (typewriter effect, respects prefers-reduced-motion) */}
@@ -39,9 +39,7 @@ function Home() {
         </div>
 
 
-        {/* hint: see components/AsciiArt.jsx for Key 1; combine with terminal Key 2 */}
-
-        {/* Hidden hover popup: subtle glitch/neon clue (bottom-right) */}
+   
         <div className="fixed bottom-3 right-3 z-20 group/popup select-none">
           {/* Invisible hover target in the corner */}
           <div
