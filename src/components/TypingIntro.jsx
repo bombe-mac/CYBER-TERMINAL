@@ -50,7 +50,7 @@ function TypingIntro({ lines = [], charDelay = 18, lineDelay = 400 }) {
   }, [lines, charDelay, lineDelay, motionReduced]);
 
   return (
-    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 shadow-neon-blue">
+    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 ">
       <div aria-live="polite" className="text-neon-blue">
         {output.map((line, i) => (
           <div key={i} className="whitespace-pre-wrap">

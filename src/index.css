@@ -59,7 +59,7 @@
   pointer-events: none;
 }
 
-/* Hover glitch helper */
+/* Hover glitch helper
 .glitch-hover:hover {
   text-shadow:
     0 0 2px #39FF14,
@@ -68,7 +68,7 @@
     -2px 0 #00E5FF;
   filter: saturate(1.25) contrast(1.1);
   animation: glitch-jitter 120ms steps(2) 1;
-}
+} */
 
 /* Neon focus ring for keyboard nav */
 .neon-focus:focus-visible {

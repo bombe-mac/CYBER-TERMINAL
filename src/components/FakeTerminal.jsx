@@ -110,7 +110,7 @@ function FakeTerminal() {
           "  help                    - Show this help message",
           "  clear                   - Clear the terminal screen",
           "  checkkey <key>          - Validate a key using your geolocation",
-          "  hints one|two|three     - Display puzzle hints",
+          "  hint one|two|three      - Display puzzle hints",
         ],
         "text-text-muted"
       ),
@@ -122,26 +122,26 @@ function FakeTerminal() {
       }
       validateKey(arg);
     },
-    hints: (arg) => {
+    hint: (arg) => {
       const a = (arg || "").trim().toLowerCase();
       const type = (line) => print([line], "term-type text-neon-blue");
 
       if (a === "1" || a === "one") {
-        return type("hint1: Everyone has a different key");
+        return type("hint1: Your key is where you are!");
       }
       if (a === "2" || a === "two") {
         return type(
-          "hint2: Learn how to get latitude and longitude from the terminal"
+          "hint2: Learn how to get latitude and longitude from the console"
         );
       }
       if (a === "3" || a === "three") {
         return type(
-          "hint3: Explore the corners to get console code to know your current location"
+          "hint3: Explore the corners to get more hint."
         );
       }
 
       print(
-        ["Usage: hints <one|two|three>", "Example: hints one"],
+        ["Usage: hint <one|two|three>", "Example: hint one"],
         "text-text-muted"
       );
     },
@@ -165,7 +165,7 @@ function FakeTerminal() {
   };
 
   return (
-    <div className="font-mono rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 shadow-neon-blue">
+    <div className="font-mono rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 ">
       <div className="mb-3 max-h-72 md:max-h-[28rem] min-h-[8rem] overflow-auto pr-1">
         {history.map((item, i) => (
           <div
@@ -192,7 +192,7 @@ function FakeTerminal() {
         />
         <button
           type="submit"
-          className="px-3 py-1 rounded border border-text-hairline/30 bg-surface-sunken text-text-primary shadow-neon-blue hover:shadow-neon-pink transition-shadow neon-focus"
+          className="px-3 py-1 rounded border border-text-hairline/30 bg-surface-sunken text-text-primary "
         >
           run
         </button>

@@ -7,7 +7,7 @@ import FakeTerminal from "../components/FakeTerminal.jsx";
 
 function Home() {
   const introLines = [
-    "> boot sequence: online",
+    "> initializing...",
     "> rendering matrix…",
     "> welcome, operator. type 'help' in the terminal below",
   ];
@@ -23,16 +23,14 @@ function Home() {
       <section className="relative z-10 mx-auto max-w-6xl px-4 py-10">
         <header className="mb-8">
           <h1 className="select-none text-4xl md:text-6xl text-neon-green drop-shadow-neonGreen glitch-hover">
-            RETRO CYBER TERMINAL
+            Welcome to the Matrix
           </h1>
-          <p className="mt-3 text-text-muted">
-            // boot sequence: online — rendering matrix — awaiting operator input
-          </p>
+          
         </header>
 
         <div className="grid gap-8">
           {/* ASCII art with hidden Key 1 in source comments */}
-          <AsciiArt />
+          
 
           {/* Typing intro (typewriter effect, respects prefers-reduced-motion) */}
           <TypingIntro lines={introLines} />
@@ -41,18 +39,6 @@ function Home() {
           <FakeTerminal />
         </div>
 
-        <footer className="mt-12 text-xs text-text-muted">
-          <span className="opacity-70">
-            hint: neon elements sometimes flicker with secrets.
-          </span>
-          <span className="mx-2">•</span>
-          <Link
-            to="/nope"
-            className="underline decoration-neon-pink/50 underline-offset-4 hover:text-neon-pink transition-colors"
-          >
-            test 404
-          </Link>
-        </footer>
 
         {/* hint: see components/AsciiArt.jsx for Key 1; combine with terminal Key 2 */}
 
@@ -65,16 +51,16 @@ function Home() {
             title="corner"
           />
           {/* Revealed popup on hover */}
-          <div className="pointer-events-none absolute bottom-8 right-0 w-64 max-w-[70vw] translate-y-2 opacity-0 scale-95 transition-all duration-200 group-hover/popup:opacity-100 group-hover/popup:translate-y-0 group-hover/popup:scale-100">
-            <div className="rounded-md border border-text-hairline/30 bg-surface-panel/95 backdrop-blur-sm p-3 shadow-neon-blue">
-              <div className="text-xs text-neon-blue drop-shadow-neonBlue hover:animate-[glitch-jitter_140ms_steps(2)_2]">
-                // system hint
-              </div>
-              <div className="mt-1 text-sm text-text-muted">
-                vectors align when decimals fall; digits march in pairs.
-              </div>
-            </div>
-          </div>
+          <div className="pointer-events-none absolute bottom-8 right-0 w-[200px] max-w-[70vw] translate-y-2 opacity-0 scale-95 transition-all duration-200 group-hover/popup:opacity-100 group-hover/popup:translate-y-0 group-hover/popup:scale-100">
+  <div className="rounded-md border border-text-hairline/30 bg-surface-panel/95 backdrop-blur-sm p-3 shadow-neon-blue">
+    <div className="text-xs text-neon-blue drop-shadow-neonBlue hover:animate-[glitch-jitter_140ms_steps(2)_2]">
+      // system hint
+    </div>
+    <div className="mt-1 text-sm text-text-muted">
+      {`Concatenate the latitude and longitude without decimals and enter checkkey <secret key>.`}
+    </div>
+  </div>
+</div>
         </div>
       </section>
     </main>
