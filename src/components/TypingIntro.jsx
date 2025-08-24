@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-/**
- * TypingIntro
- * - Typewriter effect for a small set of lines
- * - Respects prefers-reduced-motion
- */
+
 function TypingIntro({ lines = [], charDelay = 18, lineDelay = 400 }) {
   const [output, setOutput] = useState([]);
   const motionReduced = useMemo(
@@ -54,7 +50,7 @@ function TypingIntro({ lines = [], charDelay = 18, lineDelay = 400 }) {
   }, [lines, charDelay, lineDelay, motionReduced]);
 
   return (
-    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4">
+    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 shadow-neon-blue">
       <div aria-live="polite" className="text-neon-blue">
         {output.map((line, i) => (
           <div key={i} className="whitespace-pre-wrap">

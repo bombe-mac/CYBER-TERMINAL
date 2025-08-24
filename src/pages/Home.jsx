@@ -55,6 +55,27 @@ function Home() {
         </footer>
 
         {/* hint: see components/AsciiArt.jsx for Key 1; combine with terminal Key 2 */}
+
+        {/* Hidden hover popup: subtle glitch/neon clue (bottom-right) */}
+        <div className="fixed bottom-3 right-3 z-20 group/popup select-none">
+          {/* Invisible hover target in the corner */}
+          <div
+            className="h-6 w-6 opacity-0"
+            aria-hidden="true"
+            title="corner"
+          />
+          {/* Revealed popup on hover */}
+          <div className="pointer-events-none absolute bottom-8 right-0 w-64 max-w-[70vw] translate-y-2 opacity-0 scale-95 transition-all duration-200 group-hover/popup:opacity-100 group-hover/popup:translate-y-0 group-hover/popup:scale-100">
+            <div className="rounded-md border border-text-hairline/30 bg-surface-panel/95 backdrop-blur-sm p-3 shadow-neon-blue">
+              <div className="text-xs text-neon-blue drop-shadow-neonBlue hover:animate-[glitch-jitter_140ms_steps(2)_2]">
+                // system hint
+              </div>
+              <div className="mt-1 text-sm text-text-muted">
+                vectors align when decimals fall; digits march in pairs.
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

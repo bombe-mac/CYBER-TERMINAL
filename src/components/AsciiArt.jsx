@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-/*
-  KEY 1 (hidden in source):
-  KEY1=R3TR0-CYB3R-531
-  hint: view source of this component or the rendered page to discover more.
-*/
 
 function AsciiArt() {
   const [revealed, setRevealed] = useState(false);
@@ -16,18 +11,20 @@ function AsciiArt() {
   }, []);
 
   return (
-    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 shadow-neon-green">
+    <div className="rounded-lg border border-text-hairline/30 bg-surface-panel p-4 md:p-5 shadow-neon-green">
       {/* Primary banner */}
       <pre
         className="text-neon-green text-2xl leading-none whitespace-pre-wrap select-none drop-shadow-neonGreen glitch-hover"
-        aria-label="Retro ASCII logo"
+        aria-label="WELCOME TO THE MATRIX ASCII"
       >{String.raw`
-   ____      __            __       ______           __              
-  / __ \_____/ /___  ____  / /____  / ____/___  _____/ /___  _________
- / / / / ___/ / __ \/ __ \/ __/ _ \/ /   / __ \/ ___/ __/ / / / ___/ _ \
-/ /_/ / /  / / /_/ / /_/ / /_/  __/ /___/ /_/ / /  / /_/ /_/ / /  /  __/
-\____/_/  /_/\____/\____/\__/\___/\____/\____/_/   \__/\__,_/_/   \___/
-`}</pre>
+__        __   _                            _        _            __  __      _        _
+\ \      / /__| | ___ ___  _ __ ___   ___  | | _____| |_ ___     |  \/  | ___| |_ __ _(_)_ __   ___
+ \ \ /\ / / _ \ |/ __/ _ \| '_ \` _ \ / _ \ | |/ / _ \ __/ __|    | |\/| |/ _ \ __/ _\` | | '_ \ / _ \
+  \ V  V /  __/ | (_| (_) | | | | | |  __/ |   <  __/ |_\__ \    | |  | |  __/ || (_| | | | | |  __/
+   \_/\_/ \___|_|\___\___/|_| |_| |_|\___| |_|\_\___|\__|___/    |_|  |_|\___|\__\__,_|_|_| |_|\___|
+                                                                                                    
+                   W E L C O M E   T O   T H E   M A T R I X
+ `}</pre>
 
       <p className="mt-2 text-xs text-text-muted">
         hover for a glitch — something hums below the phosphors
@@ -35,7 +32,7 @@ function AsciiArt() {
 
       {/* Hidden ASCII clue: reveals only after key validation */}
       <div
-        className={`mt-4 rounded-md border border-text-hairline/20 bg-surface-sunken p-3 shadow-neon-blue ascii-reveal ${
+        className={`mt-4 rounded-md border border-text-hairline/20 bg-surface-sunken p-3 md:p-4 shadow-neon-blue ascii-reveal ${
           revealed ? "ascii-reveal--open" : ""
         }`}
         aria-hidden={!revealed}
