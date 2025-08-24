@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MatrixCanvas from "../components/MatrixCanvas.jsx";
-import AsciiArt from "../components/AsciiArt.jsx";
 import TypingIntro from "../components/TypingIntro.jsx";
 import FakeTerminal from "../components/FakeTerminal.jsx";
 
