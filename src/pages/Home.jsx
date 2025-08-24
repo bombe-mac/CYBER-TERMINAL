@@ -54,7 +54,7 @@ function Home() {
       // system hint
     </div>
     <div className="mt-1 text-sm text-text-muted">
-      {`Concatenate the latitude and longitude without decimals and enter checkkey <secret key>.`}
+      {`Concatenate the latitude and longitude without decimals and enter checkkey <secretkey>.`}
     </div>
   </div>
 </div>

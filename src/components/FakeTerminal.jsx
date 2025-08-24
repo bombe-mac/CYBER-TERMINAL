@@ -73,7 +73,7 @@ function FakeTerminal() {
         const userKeyAbs = userKeyBigInt < 0n ? -userKeyBigInt : userKeyBigInt;
 
         if (userKeyAbs === secretKey) {
-          print("✅ Access granted. Key verified.", "term-success");
+          print("✅ Key verified.", "term-success");
           print(
             "Your location is: " + latitude + ", " + longitude,
             "text-text-muted"
