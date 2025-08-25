@@ -72,4 +72,4 @@ If correct, the system verifies and confirms success ✅
 
 ## 🎥 Demonstration Video
 
-![video](https://github.com/bombe-mac/CYBER-TERMINAL/issues/3#issue-3349687419)
+![video](https://drive.google.com/file/d/11luRgyNphaiqtKcFMD2uSZUA_zv1XOUz/view?usp=drive_link)
