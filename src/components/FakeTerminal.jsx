@@ -81,7 +81,7 @@ function FakeTerminal() {
         } else {
           const providedLen = userKey.length;
           print(
-            `❌ Access denied. Incorrect key. (Digits: provided ${providedLen}, expected ${expectedLen})`,
+            `❌ Incorrect key. (Digits: provided ${providedLen}, expected ${expectedLen})`,
             "term-error"
           );
         }
